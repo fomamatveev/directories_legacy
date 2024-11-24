@@ -9,6 +9,11 @@ public class AuthService(UserRepository userRepository)
 {
     private readonly UserRepository _userRepository = userRepository;
 
+    /// <summary>
+    /// Метод регистрации пользователя
+    /// </summary>
+    /// <param name="registerRequest">Сущность запроса регистрации</param>
+    /// <returns>AuthResult</returns>
     public async Task<AuthResult> RegisterAsync(RegisterRequest registerRequest)
     {
         if (await _userRepository.GetUserByNameAsync(registerRequest.Username) != null ||
@@ -21,7 +26,8 @@ public class AuthService(UserRepository userRepository)
         {
             Username = registerRequest.Username,
             PasswordHash = passwordHash,
-            PasswordSalt = passwordSalt
+            PasswordSalt = passwordSalt,
+            CreatedAt = DateTime.Now.ToUniversalTime()
         };
 
         await _userRepository.CreateAsync(user);
@@ -29,6 +35,11 @@ public class AuthService(UserRepository userRepository)
         return AuthResult.Success(user);
     }
 
+    /// <summary>
+    /// Метод авторизации пользователя
+    /// </summary>
+    /// <param name="loginRequest">Сущность запроса авторизации</param>
+    /// <returns>AuthResult</returns>
     public async Task<AuthResult> LoginAsync(LoginRequest loginRequest)
     {
         var user = await _userRepository.GetUserByNameAsync(loginRequest.Username);
@@ -38,6 +49,12 @@ public class AuthService(UserRepository userRepository)
         return AuthResult.Success(user);
     }
     
+    /// <summary>
+    /// Метод, создающий хэш-пароль и соль пароля
+    /// </summary>
+    /// <param name="password">Пароль</param>
+    /// <param name="passwordHash">Хэш-пароль</param>
+    /// <param name="passwordSalt">Соль пароля</param>
     private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
     {
         using var hmac = new HMACSHA512();
@@ -45,6 +62,14 @@ public class AuthService(UserRepository userRepository)
         passwordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password));
     }
 
+    /// <summary>
+    /// Метод верификации пароля
+    /// </summary>
+    /// <param name="password">Пароль</param>
+    /// <param name="passwordHash">Хэш-пароль</param>
+    /// <param name="passwordSalt">Соль пароля</param>
+    /// <returns>Возвращает хэш-пароль</returns>
+    /// <exception cref="Exception">Ошибка, если хэш и соль пустые</exception>
     private static bool VerifyPasswordHash(string password, byte[]? passwordHash, byte[]? passwordSalt)
     {
         if (passwordHash == null || passwordSalt == null) throw new Exception("User is null.");
