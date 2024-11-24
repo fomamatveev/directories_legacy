@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.StartUp", "DL.StartUp\DL.StartUp.csproj", "{55D3944B-978C-4EC7-99AE-FC65CA496106}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.Migrator", "DL.Migrator\DL.Migrator.csproj", "{BB769E99-116D-48B9-8B14-271BC394AB1C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.Auth", "DL.Auth\DL.Auth.csproj", "{2FBD55D0-8BB9-4F67-A65F-DB5FED65E597}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55D3944B-978C-4EC7-99AE-FC65CA496106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55D3944B-978C-4EC7-99AE-FC65CA496106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55D3944B-978C-4EC7-99AE-FC65CA496106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55D3944B-978C-4EC7-99AE-FC65CA496106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB769E99-116D-48B9-8B14-271BC394AB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB769E99-116D-48B9-8B14-271BC394AB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB769E99-116D-48B9-8B14-271BC394AB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB769E99-116D-48B9-8B14-271BC394AB1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FBD55D0-8BB9-4F67-A65F-DB5FED65E597}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FBD55D0-8BB9-4F67-A65F-DB5FED65E597}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FBD55D0-8BB9-4F67-A65F-DB5FED65E597}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FBD55D0-8BB9-4F67-A65F-DB5FED65E597}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
