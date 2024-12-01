@@ -1,0 +1,23 @@
+﻿using DL.Directories.Models.Product;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DL.Directories.Configurations;
+
+public class ProductEntityTypeConfiguration : BaseEntityTypeConfiguration<Product>
+{
+    protected override void ConfigureEntity(EntityTypeBuilder<Product> builder)
+    {
+        base.ConfigureEntity(builder);
+        
+        builder.ToTable("Product");
+        
+        builder.Property(x => x.Description).HasColumnName("Description");
+        builder.Property(x => x.Quantity).HasColumnName("Quantity");
+        builder.Property(x => x.ProductTypeId).HasColumnName("ProductTypeId");
+
+        builder
+            .HasOne(x => x.ProductType)
+            .WithMany();
+    }
+}

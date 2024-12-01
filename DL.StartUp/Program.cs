@@ -1,10 +1,14 @@
 using DL.Auth.Services;
+using DL.Directories.Services;
 using DL.Migrator.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddMigrator();
 builder.Services.AddAuth(builder.Configuration);
+builder.Services.AddDirectoriesRepository(builder.Configuration);
+builder.Services.AddProduct();
+builder.Services.AddProductType();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
