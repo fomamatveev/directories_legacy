@@ -8,12 +8,12 @@ public class Entity
     /// <summary>
     /// Идентификатор записи
     /// </summary>
-    public int Id { get; set; }
+    public long Id { get; set; }
     
     /// <summary>
     /// Наименование записи
     /// </summary>
-    public string Name { get; set; }
+    public string? Name { get; set; }
     
     /// <summary>
     /// Краткое наименование записи
@@ -28,5 +28,5 @@ public class Entity
     /// <summary>
     /// Дата редактирования
     /// </summary>
-    public DateTime? UpdatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
 }

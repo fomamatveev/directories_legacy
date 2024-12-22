@@ -35,6 +35,9 @@ public class StorageLocationService : IStorageLocationService
     {
         ArgumentNullException.ThrowIfNull(product);
 
+        product.CreatedAt = DateTime.UtcNow;
+        product.UpdatedAt = DateTime.UtcNow;
+        
         await _repository.AddAsync(product);
 
         return product;
