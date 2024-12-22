@@ -9,6 +9,7 @@ builder.Services.AddAuth(builder.Configuration);
 builder.Services.AddDirectoriesRepository(builder.Configuration);
 builder.Services.AddProduct();
 builder.Services.AddProductType();
+builder.Services.AddStorageLocation();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

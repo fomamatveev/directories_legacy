@@ -1,8 +1,10 @@
 ﻿using DL.Directories.Data;
 using DL.Directories.Interfaces;
 using DL.Directories.Interfaces.ProductInterface;
+using DL.Directories.Interfaces.StorageInterface;
 using DL.Directories.Repositories;
 using DL.Directories.Services.ProductService;
+using DL.Directories.Services.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -47,6 +49,18 @@ public static class DirectoriesServiceCollectionExtensions
     public static IServiceCollection AddProductType(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IProductTypeService, ProductTypeService>();
+
+        return serviceCollection;
+    }
+
+    /// <summary>
+    /// Расширение для регистрации StorageLocationService
+    /// </summary>
+    /// <param name="serviceCollection"></param>
+    /// <returns></returns>
+    public static IServiceCollection AddStorageLocation(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<IStorageLocationService, StorageLocationService>();
 
         return serviceCollection;
     }
