@@ -27,7 +27,7 @@ public class Product : Entity
     /// </summary>
     public StorageLocation StorageLocation { get; set; }
     
-    public int ProductTypeId { get; set; }
+    public long ProductTypeId { get; set; }
     
-    public int StorageLocationId { get; set; }
+    public long StorageLocationId { get; set; }
 }

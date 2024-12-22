@@ -8,7 +8,7 @@ public class Entity
     /// <summary>
     /// Идентификатор записи
     /// </summary>
-    public int Id { get; set; }
+    public long Id { get; set; }
     
     /// <summary>
     /// Наименование записи
