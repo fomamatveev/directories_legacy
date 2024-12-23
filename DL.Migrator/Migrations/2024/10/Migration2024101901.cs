@@ -7,12 +7,12 @@ internal class Migration2024101901(DatabaseConnection databaseConnection) : Migr
     public override void Up()
     {
         var query = $"""
-                     CREATE TABLE IF NOT EXISTS Users (
-                                                    id serial PRIMARY KEY,
-                                                    username VARCHAR(100) NOT NULL UNIQUE,
-                                                    password_hash BYTEA NOT NULL,
-                                                    password_salt BYTEA NOT NULL,
-                                                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+                     CREATE TABLE IF NOT EXISTS "User" (
+                                                    "Id" SERIAL PRIMARY KEY,
+                                                    "Username" VARCHAR(100) NOT NULL UNIQUE,
+                                                    "PasswordHash" BYTEA NOT NULL,
+                                                    "PasswordSalt" BYTEA NOT NULL,
+                                                    "CreatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
                      """;
 
         DatabaseConnection.ExecuteNonQuery(query);

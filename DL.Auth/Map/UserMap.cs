@@ -8,12 +8,12 @@ public class UserMap : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.ToTable("users");
+        builder.ToTable("User");
 
-        builder.Property(u => u.Id).HasColumnName("id");
-        builder.Property(u => u.Username).HasColumnName("username");
-        builder.Property(u => u.PasswordHash).HasColumnName("password_hash");
-        builder.Property(u => u.PasswordSalt).HasColumnName("password_salt");
-        builder.Property(u => u.CreatedAt).HasColumnName("created_at");
+        builder.Property(u => u.Id).HasColumnName("Id");
+        builder.Property(u => u.Username).HasColumnName("Username");
+        builder.Property(u => u.PasswordHash).HasColumnName("PasswordSalt");
+        builder.Property(u => u.PasswordSalt).HasColumnName("PasswordHash");
+        builder.Property(u => u.CreatedAt).HasColumnName("CreatedAt");
     }
 }
