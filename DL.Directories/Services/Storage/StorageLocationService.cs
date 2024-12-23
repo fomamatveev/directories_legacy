@@ -21,34 +21,40 @@ public class StorageLocationService : IStorageLocationService
 
     public async Task<StorageLocation> GetAsync(int id)
     {
-        var product = await _repository.GetByIdAsync(id);
+        var storageLocation = await _repository.GetByIdAsync(id);
 
-        if (product == null)
+        if (storageLocation == null)
         {
-            throw new KeyNotFoundException($"Product with ID {id} not found.");
+            throw new KeyNotFoundException($"StorageLocation with ID {id} not found.");
         }
         
-        return product;
+        return storageLocation;
     }
 
-    public async Task<StorageLocation> CreateAsync(StorageLocation product)
+    public async Task<StorageLocation> CreateAsync(StorageLocation storageLocation)
     {
-        ArgumentNullException.ThrowIfNull(product);
+        ArgumentNullException.ThrowIfNull(storageLocation);
 
-        product.CreatedAt = DateTime.UtcNow;
-        product.UpdatedAt = DateTime.UtcNow;
+        storageLocation.CreatedAt = DateTime.UtcNow.Date;
+        storageLocation.UpdatedAt = DateTime.UtcNow;
         
-        await _repository.AddAsync(product);
+        await _repository.AddAsync(storageLocation);
 
-        return product;
+        return storageLocation;
     }
 
-    public async Task<StorageLocation> UpdateAsync(StorageLocation product)
+    public async Task<StorageLocation> UpdateAsync(StorageLocation storageLocation)
     {
-        ArgumentNullException.ThrowIfNull(product);
+        ArgumentNullException.ThrowIfNull(storageLocation);
 
-        var result = await _repository.GetByIdAsync(product.Id);
-
+        var result = await _repository.GetByIdAsync(storageLocation.Id);
+        
+        result.CreatedAt = DateTime.SpecifyKind(storageLocation.CreatedAt, DateTimeKind.Utc);
+        result.UpdatedAt = DateTime.UtcNow;
+        result.Rack = storageLocation.Rack;
+        result.Compartment = storageLocation.Compartment;
+        result.Part = storageLocation.Part;
+        
         await _repository.UpdateAsync(result);
         
         return result;
@@ -56,9 +62,9 @@ public class StorageLocationService : IStorageLocationService
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var product = await _repository.GetByIdAsync(id);
+        var storageLocation = await _repository.GetByIdAsync(id);
 
-        await _repository.DeleteAsync(product);
+        await _repository.DeleteAsync(storageLocation);
 
         return true;
     }

@@ -81,7 +81,7 @@ public class StorageLocationController : ControllerBase
         {
             var result = await _storageLocationService.DeleteAsync(id);
 
-            return result ? NoContent() : NotFound();
+            return result ? Ok() : NotFound();
         }
         catch (KeyNotFoundException)
         {

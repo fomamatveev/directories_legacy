@@ -1,4 +1,5 @@
-﻿using DL.Directories.Interfaces.ProductInterface;
+﻿using DL.Directories.Dtos;
+using DL.Directories.Interfaces.ProductInterface;
 using DL.Directories.Models;
 using DL.Directories.Models.Product;
 using Microsoft.AspNetCore.Mvc;
@@ -43,7 +44,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> Create(Product product)
+    public async Task<IActionResult> Create(ProductDto product)
     {
         if (product == null)
         {
@@ -56,7 +57,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
-    public async Task<IActionResult> Update(int id, Product product)
+    public async Task<IActionResult> Update(int id, ProductDto product)
     {
         if (id != product.Id)
         {
@@ -82,7 +83,7 @@ public class ProductController : ControllerBase
         {
             var result = await _productService.DeleteAsync(id);
 
-            return result ? NoContent() : NotFound();
+            return result ? Ok() : NotFound();
         }
         catch (KeyNotFoundException)
         {
