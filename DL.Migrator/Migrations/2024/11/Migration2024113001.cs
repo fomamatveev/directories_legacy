@@ -15,7 +15,8 @@ internal class Migration2024113001(DatabaseConnection databaseConnection) : Migr
                                                     "UpdatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                                                     "Description" VARCHAR(200),
                                                     "Quantity" INT,
-                                                    "ProductTypeId" SERIAL);
+                                                    "ProductTypeId" SERIAL,
+                                                    "StorageLocationId" SERIAL);
                      CREATE TABLE IF NOT EXISTS "ProductType" (
                                                     "Id" SERIAL PRIMARY KEY,
                                                     "Name" VARCHAR(100),

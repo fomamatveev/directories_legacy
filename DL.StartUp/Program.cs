@@ -9,6 +9,7 @@ builder.Services.AddAuth(builder.Configuration);
 builder.Services.AddDirectoriesRepository(builder.Configuration);
 builder.Services.AddProduct();
 builder.Services.AddProductType();
+builder.Services.AddStorageLocation();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -19,7 +20,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:8000")
+        policy.WithOrigins("http://localhost:3000")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();

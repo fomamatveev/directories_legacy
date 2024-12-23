@@ -1,4 +1,6 @@
-﻿namespace DL.Directories.Models.Product;
+﻿using DL.Directories.Models.Storage;
+
+namespace DL.Directories.Models.Product;
 
 /// <summary>
 /// Сущность товара
@@ -20,5 +22,12 @@ public class Product : Entity
     /// </summary>
     public ProductType ProductType { get; set; }
     
-    public int ProductTypeId { get; set; }
+    /// <summary>
+    /// Место хранения
+    /// </summary>
+    public StorageLocation StorageLocation { get; set; }
+    
+    public long ProductTypeId { get; set; }
+    
+    public long StorageLocationId { get; set; }
 }
