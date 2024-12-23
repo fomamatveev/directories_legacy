@@ -1,4 +1,4 @@
-﻿using DL.Directories.Models;
+﻿using DL.Directories.Dtos;
 using DL.Directories.Models.Product;
 
 namespace DL.Directories.Interfaces.ProductInterface;
@@ -8,13 +8,13 @@ namespace DL.Directories.Interfaces.ProductInterface;
 /// </summary>
 public interface IProductService
 {
-    Task<List<Product>> ListAsync();
+    Task<List<ProductListDto>> ListAsync();
 
     Task<Product> GetAsync(int id);
     
-    Task<Product> CreateAsync(Product product);
+    Task<Product> CreateAsync(ProductDto product);
     
-    Task<Product> UpdateAsync(Product product);
+    Task<Product> UpdateAsync(ProductDto product);
     
     Task<bool> DeleteAsync(int id);
 }

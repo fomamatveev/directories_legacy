@@ -1,11 +1,8 @@
-﻿using DL.Directories.Models.Storage;
+﻿using DL.Directories.Models;
 
-namespace DL.Directories.Models.Product;
+namespace DL.Directories.Dtos;
 
-/// <summary>
-/// Сущность товара
-/// </summary>
-public class Product : Entity
+public class ProductDto : Entity
 {
     /// <summary>
     /// Описание товара
@@ -16,16 +13,6 @@ public class Product : Entity
     /// Количество товара
     /// </summary>
     public int Quantity { get; set; }
-    
-    /// <summary>
-    /// Категория продукта
-    /// </summary>
-    public ProductType ProductType { get; set; }
-    
-    /// <summary>
-    /// Место хранения
-    /// </summary>
-    public StorageLocation StorageLocation { get; set; }
     
     /// <summary>
     /// Идентификатор категории продукта

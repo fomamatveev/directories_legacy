@@ -35,6 +35,9 @@ public class ProductTypeService : IProductTypeService
     {
         ArgumentNullException.ThrowIfNull(productType);
 
+        productType.CreatedAt = DateTime.UtcNow;
+        productType.UpdatedAt = DateTime.UtcNow;
+        
         await _repository.AddAsync(productType);
 
         return productType;
@@ -46,6 +49,11 @@ public class ProductTypeService : IProductTypeService
 
         var result = await _repository.GetByIdAsync(productType.Id);
 
+        result.Name = productType.Name;
+        result.ShortName = productType.ShortName;
+        result.CreatedAt = DateTime.SpecifyKind(productType.CreatedAt, DateTimeKind.Utc);
+        result.UpdatedAt = DateTime.UtcNow;
+        
         await _repository.UpdateAsync(result);
         
         return result;

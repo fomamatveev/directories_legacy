@@ -81,7 +81,7 @@ public class ProductTypeController : ControllerBase
         {
             var result = await _productTypeService.DeleteAsync(id);
 
-            return result ? NoContent() : NotFound();
+            return result ? Ok() : NotFound();
         }
         catch (KeyNotFoundException)
         {
