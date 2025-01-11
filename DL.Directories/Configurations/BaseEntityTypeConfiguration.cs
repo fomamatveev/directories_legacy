@@ -18,6 +18,8 @@ public class BaseEntityTypeConfiguration<T> : IEntityTypeConfiguration<T>
         builder.Property(x => x.Name).HasColumnName("Name");
         builder.Property(x => x.ShortName).HasColumnName("ShortName");
         builder.Property(x => x.CreatedAt).HasColumnName("CreatedAt");
+        builder.Property(x => x.CreatedBy).HasColumnName("CreatedBy");
         builder.Property(x => x.UpdatedAt).HasColumnName("UpdatedAt");
+        builder.Property(x => x.UpdatedBy).HasColumnName("UpdatedBy");
     }
 }
