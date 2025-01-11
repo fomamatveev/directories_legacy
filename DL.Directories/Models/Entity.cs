@@ -26,7 +26,17 @@ public class Entity
     public DateTime CreatedAt { get; set; }
     
     /// <summary>
+    /// Пользователь, создавший запись
+    /// </summary>
+    public long CreatedBy { get; set; }
+    
+    /// <summary>
     /// Дата редактирования
     /// </summary>
     public DateTime UpdatedAt { get; set; }
+    
+    /// <summary>
+    /// Пользователь, внесший изменения
+    /// </summary>
+    public long UpdatedBy { get; set; }
 }
