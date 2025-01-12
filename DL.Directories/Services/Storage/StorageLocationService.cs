@@ -7,9 +7,9 @@ namespace DL.Directories.Services.Storage;
 
 public class StorageLocationService : IStorageLocationService
 {
-    private readonly IRepository<StorageLocation> _repository;
+    private readonly IDirectoriesRepository<StorageLocation> _repository;
 
-    public StorageLocationService(IRepository<StorageLocation> storageLocationRepository)
+    public StorageLocationService(IDirectoriesRepository<StorageLocation> storageLocationRepository)
     {
         _repository = storageLocationRepository;
     }

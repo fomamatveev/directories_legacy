@@ -1,3 +1,4 @@
+using DL.Audit.Services;
 using DL.Auth.Services;
 using DL.Directories.Services;
 using DL.Migrator.Services;
@@ -10,6 +11,7 @@ builder.Services.AddDirectoriesRepository(builder.Configuration);
 builder.Services.AddProduct();
 builder.Services.AddProductType();
 builder.Services.AddStorageLocation();
+builder.Services.AddAudit(builder.Configuration);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -12,6 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\DL.Audit\DL.Audit.csproj" />
       <ProjectReference Include="..\DL.Auth\DL.Auth.csproj" />
       <ProjectReference Include="..\DL.Directories\DL.Directories.csproj" />
       <ProjectReference Include="..\DL.Migrator\DL.Migrator.csproj" />

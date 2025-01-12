@@ -1,8 +1,6 @@
-﻿using DL.Directories.Models;
+﻿namespace DL.BaseRepo.Interfaces;
 
-namespace DL.Directories.Interfaces;
-
-public interface IRepository<T> where T : Entity
+public interface IRepository<T>
 {
     IQueryable<T> GetAll();
     Task<T> GetByIdAsync(long id);

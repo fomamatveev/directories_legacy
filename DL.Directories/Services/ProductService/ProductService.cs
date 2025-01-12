@@ -8,9 +8,9 @@ namespace DL.Directories.Services.ProductService;
 
 public class ProductService : IProductService
 {
-    private readonly IRepository<Product> _repository;
+    private readonly IDirectoriesRepository<Product> _repository;
 
-    public ProductService(IRepository<Product> repository)
+    public ProductService(IDirectoriesRepository<Product> repository)
     {
         _repository = repository;
     }

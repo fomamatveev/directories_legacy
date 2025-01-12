@@ -7,9 +7,9 @@ namespace DL.Directories.Services.ProductService;
 
 public class ProductTypeService : IProductTypeService
 {
-    private readonly IRepository<ProductType> _repository;
+    private readonly IDirectoriesRepository<ProductType> _repository;
 
-    public ProductTypeService(IRepository<ProductType> repository)
+    public ProductTypeService(IDirectoriesRepository<ProductType> repository)
     {
         _repository = repository;
     }

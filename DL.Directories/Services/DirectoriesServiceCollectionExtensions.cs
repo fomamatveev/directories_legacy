@@ -24,7 +24,7 @@ public static class DirectoriesServiceCollectionExtensions
         serviceCollection.AddDbContext<DirectoriesDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
         
-        serviceCollection.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        serviceCollection.AddScoped(typeof(IDirectoriesRepository<>), typeof(DirectoriesRepository<>));
 
         return serviceCollection;
     }

@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.Auth", "DL.Auth\DL.Auth.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.Directories", "DL.Directories\DL.Directories.csproj", "{BDCBFC94-88B4-425F-8D65-4F7A711D782F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.Audit", "DL.Audit\DL.Audit.csproj", "{E47F37FE-5199-479A-8210-F529DA945B79}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DL.BaseRepo", "DL.BaseRepo\DL.BaseRepo.csproj", "{92038AC7-F783-4A6A-81B9-17EB691D94F0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,13 @@ Global
 		{BDCBFC94-88B4-425F-8D65-4F7A711D782F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDCBFC94-88B4-425F-8D65-4F7A711D782F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDCBFC94-88B4-425F-8D65-4F7A711D782F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E47F37FE-5199-479A-8210-F529DA945B79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E47F37FE-5199-479A-8210-F529DA945B79}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E47F37FE-5199-479A-8210-F529DA945B79}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E47F37FE-5199-479A-8210-F529DA945B79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92038AC7-F783-4A6A-81B9-17EB691D94F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92038AC7-F783-4A6A-81B9-17EB691D94F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92038AC7-F783-4A6A-81B9-17EB691D94F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92038AC7-F783-4A6A-81B9-17EB691D94F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
