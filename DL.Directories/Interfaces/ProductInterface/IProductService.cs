@@ -1,5 +1,5 @@
-﻿using DL.Directories.Dtos;
-using DL.Directories.Models.Product;
+﻿using DL.Core.Models.Product;
+using DL.Directories.Dtos;
 
 namespace DL.Directories.Interfaces.ProductInterface;
 

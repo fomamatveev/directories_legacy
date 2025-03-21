@@ -12,4 +12,9 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.10" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DL.Audit.Models\DL.Audit.Models.csproj" />
+      <ProjectReference Include="..\DL.Core\DL.Core.csproj" />
+    </ItemGroup>
+
 </Project>

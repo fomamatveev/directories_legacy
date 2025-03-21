@@ -1,6 +1,6 @@
-﻿using DL.Directories.Models.Storage;
+﻿using DL.Core.Models.Storage;
 
-namespace DL.Directories.Models.Product;
+namespace DL.Core.Models.Product;
 
 /// <summary>
 /// Сущность товара

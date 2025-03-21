@@ -1,4 +1,4 @@
-﻿using DL.Directories.Models;
+﻿using DL.Core.Models;
 
 namespace DL.Directories.Dtos;
 

@@ -1,4 +1,4 @@
-﻿namespace DL.Directories.Models.Storage;
+﻿namespace DL.Core.Models.Storage;
 
 public class StorageLocation : Entity
 {

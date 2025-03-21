@@ -1,6 +1,6 @@
-﻿using DL.Directories.Interfaces;
+﻿using DL.Core.Interfaces;
+using DL.Core.Models.Product;
 using DL.Directories.Interfaces.ProductInterface;
-using DL.Directories.Models.Product;
 using Microsoft.EntityFrameworkCore;
 
 namespace DL.Directories.Services.ProductService;
@@ -37,6 +37,7 @@ public class ProductTypeService : IProductTypeService
 
         productType.CreatedAt = DateTime.UtcNow;
         productType.UpdatedAt = DateTime.UtcNow;
+        productType.UpdatedBy = productType.CreatedBy;
         
         await _repository.AddAsync(productType);
 
@@ -52,7 +53,8 @@ public class ProductTypeService : IProductTypeService
         result.Name = productType.Name;
         result.ShortName = productType.ShortName;
         result.CreatedAt = DateTime.SpecifyKind(productType.CreatedAt, DateTimeKind.Utc);
-        result.UpdatedAt = DateTime.UtcNow;
+        result.UpdatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc);
+        result.UpdatedBy = productType.UpdatedBy;
         
         await _repository.UpdateAsync(result);
         

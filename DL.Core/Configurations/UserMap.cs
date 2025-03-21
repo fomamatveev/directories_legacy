@@ -1,8 +1,8 @@
-﻿using DL.Auth.Models;
+﻿using DL.Core.Models.Auth;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DL.Auth.Map;
+namespace DL.Core.Configurations;
 
 public class UserMap : IEntityTypeConfiguration<User>
 {

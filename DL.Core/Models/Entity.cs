@@ -1,4 +1,4 @@
-﻿namespace DL.Directories.Models;
+﻿namespace DL.Core.Models;
 
 /// <summary>
 /// Базовая сущность

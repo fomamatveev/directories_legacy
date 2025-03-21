@@ -1,11 +1,11 @@
-﻿using DL.Directories.Data;
-using DL.Directories.Interfaces;
-using DL.Directories.Models;
+﻿using DL.Core.Data;
+using DL.Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace DL.Directories.Repositories;
+namespace DL.Core.Repositories;
 
-public class Repository<T> : IRepository<T> where T : Entity
+public class Repository<T> : IRepository<T> 
+    where T : class
 {
     private readonly DirectoriesDbContext _context;
     private readonly DbSet<T> _dbSet;

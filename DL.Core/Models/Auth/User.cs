@@ -1,4 +1,4 @@
-﻿namespace DL.Auth.Models;
+﻿namespace DL.Core.Models.Auth;
 
 public class User
 {

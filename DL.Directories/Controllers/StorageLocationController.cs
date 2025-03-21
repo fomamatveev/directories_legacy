@@ -1,5 +1,8 @@
-﻿using DL.Directories.Interfaces.StorageInterface;
-using DL.Directories.Models.Storage;
+﻿using DL.Core;
+using DL.Core.Extensions;
+using DL.Core.Models.Storage;
+using DL.Directories.Interfaces.StorageInterface;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DL.Directories.Controllers;
@@ -7,6 +10,7 @@ namespace DL.Directories.Controllers;
 /// <summary>
 /// Контроллер места хранения
 /// </summary>
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class StorageLocationController : ControllerBase
@@ -44,6 +48,9 @@ public class StorageLocationController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(StorageLocation storageLocation)
     {
+        var userId = HttpContext.User.GetUserId();
+        storageLocation.CreatedBy = userId;
+        
         if (storageLocation == null)
         {
             return BadRequest("Product is null");
@@ -57,6 +64,9 @@ public class StorageLocationController : ControllerBase
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, StorageLocation storageLocation)
     {
+        var userId = HttpContext.User.GetUserId();
+        storageLocation.UpdatedBy = userId;
+        
         if (id != storageLocation.Id)
         {
             return BadRequest("ID mismatch.");

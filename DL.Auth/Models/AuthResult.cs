@@ -1,3 +1,5 @@
+using DL.Core.Models.Auth;
+
 namespace DL.Auth.Models;
 
 public class AuthResult

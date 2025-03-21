@@ -1,8 +1,8 @@
-﻿using DL.Directories.Models;
+﻿using DL.Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DL.Directories.Configurations;
+namespace DL.Core.Configurations;
 
 public class BaseEntityTypeConfiguration<T> : IEntityTypeConfiguration<T>
     where T : Entity

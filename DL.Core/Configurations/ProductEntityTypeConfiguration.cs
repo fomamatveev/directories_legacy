@@ -1,8 +1,8 @@
-﻿using DL.Directories.Models.Product;
+﻿using DL.Core.Models.Product;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DL.Directories.Configurations;
+namespace DL.Core.Configurations;
 
 public class ProductEntityTypeConfiguration : BaseEntityTypeConfiguration<Product>
 {

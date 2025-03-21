@@ -1,5 +1,10 @@
 ﻿using DL.Auth.Data;
+using DL.Auth.Interfaces;
+using DL.Auth.Models;
 using DL.Auth.Repositories;
+using DL.Core.Interfaces;
+using DL.Core.Models.Auth;
+using DL.Core.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,8 +33,9 @@ public static class AuthServiceCollectionExtensions
                 options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
             });
         serviceCollection.AddAuthorization();
-        
-        serviceCollection.AddScoped<UserRepository>();
+
+        serviceCollection.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        serviceCollection.AddScoped<IUserService, UserService>();
         serviceCollection.AddScoped<AuthService>();
 
         return serviceCollection;

@@ -1,8 +1,8 @@
-﻿using DL.Directories.Models.Storage;
+﻿using DL.Core.Models.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DL.Directories.Configurations;
+namespace DL.Core.Configurations;
 
 public class StorageLocationEntityTypeCofiguration : BaseEntityTypeConfiguration<StorageLocation>
 {

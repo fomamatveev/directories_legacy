@@ -1,8 +1,13 @@
-﻿using DL.Directories.Data;
-using DL.Directories.Interfaces;
+﻿using DL.Audit.Models;
+using DL.Audit.Models.Interceptors;
+using DL.Core;
+using DL.Core.Data;
+using DL.Core.Interfaces;
+using DL.Core.Models;
+using DL.Core.Models.Product;
+using DL.Core.Models.Storage;
 using DL.Directories.Interfaces.ProductInterface;
 using DL.Directories.Interfaces.StorageInterface;
-using DL.Directories.Repositories;
 using DL.Directories.Services.ProductService;
 using DL.Directories.Services.Storage;
 using Microsoft.EntityFrameworkCore;
@@ -21,10 +26,9 @@ public static class DirectoriesServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddDirectoriesRepository(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
-        serviceCollection.AddDbContext<DirectoriesDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
-        
-        serviceCollection.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+        serviceCollection.AddDbContext<DirectoriesDbContext>((provider, options) => options
+                .AddInterceptors(provider.GetRequiredService<AuditInterceptor>())
+                .UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
         return serviceCollection;
     }
