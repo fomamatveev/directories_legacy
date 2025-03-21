@@ -1,13 +1,15 @@
 ﻿using System.Security.Cryptography;
 using System.Text;
+using DL.Auth.Interfaces;
 using DL.Auth.Models;
 using DL.Auth.Repositories;
+using DL.Core.Models.Auth;
 
 namespace DL.Auth.Services;
 
-public class AuthService(UserRepository userRepository)
+public class AuthService(IUserService userService)
 {
-    private readonly UserRepository _userRepository = userRepository;
+    private readonly IUserService _userService = userService;
 
     /// <summary>
     /// Метод регистрации пользователя
@@ -16,7 +18,7 @@ public class AuthService(UserRepository userRepository)
     /// <returns>AuthResult</returns>
     public async Task<AuthResult> RegisterAsync(RegisterRequest registerRequest)
     {
-        if (await _userRepository.GetUserByNameAsync(registerRequest.Username) != null ||
+        if (await _userService.GetUserByNameAsync(registerRequest.Username) != null ||
             registerRequest.Password != registerRequest.ConfirmPassword)
             return AuthResult.Failure();
         
@@ -30,7 +32,7 @@ public class AuthService(UserRepository userRepository)
             CreatedAt = DateTime.Now.ToUniversalTime()
         };
 
-        await _userRepository.CreateAsync(user);
+        await _userService.CreateAsync(user);
 
         return AuthResult.Success(user);
     }
@@ -42,7 +44,7 @@ public class AuthService(UserRepository userRepository)
     /// <returns>AuthResult</returns>
     public async Task<AuthResult> LoginAsync(LoginRequest loginRequest)
     {
-        var user = await _userRepository.GetUserByNameAsync(loginRequest.Username);
+        var user = await _userService.GetUserByNameAsync(loginRequest.Username);
         if (user == null || !VerifyPasswordHash(loginRequest.Password, user.PasswordHash, user.PasswordSalt))
             return AuthResult.Failure();
 

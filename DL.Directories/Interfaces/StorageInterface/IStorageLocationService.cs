@@ -1,4 +1,4 @@
-﻿using DL.Directories.Models.Storage;
+﻿using DL.Core.Models.Storage;
 
 namespace DL.Directories.Interfaces.StorageInterface;
 

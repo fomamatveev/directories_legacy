@@ -1,7 +1,8 @@
-﻿using DL.Directories.Dtos;
+﻿using DL.Core;
+using DL.Core.Extensions;
+using DL.Directories.Dtos;
 using DL.Directories.Interfaces.ProductInterface;
-using DL.Directories.Models;
-using DL.Directories.Models.Product;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DL.Directories.Controllers;
@@ -9,6 +10,7 @@ namespace DL.Directories.Controllers;
 /// <summary>
 /// Контроллер товаров
 /// </summary>
+[Authorize]
 [ApiController]
 [Route("[controller]")]
 public class ProductController : ControllerBase
@@ -46,6 +48,9 @@ public class ProductController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> Create(ProductDto product)
     {
+        var userId = HttpContext.User.GetUserId();
+        product.CreatedBy = userId;
+        
         if (product == null)
         {
             return BadRequest("Product is null");
@@ -59,6 +64,9 @@ public class ProductController : ControllerBase
     [HttpPut("{id:int}")]
     public async Task<IActionResult> Update(int id, ProductDto product)
     {
+        var userId = HttpContext.User.GetUserId();
+        product.UpdatedBy = userId;
+        
         if (id != product.Id)
         {
             return BadRequest("ID mismatch.");

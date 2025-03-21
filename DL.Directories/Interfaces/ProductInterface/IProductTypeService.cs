@@ -1,4 +1,4 @@
-﻿using DL.Directories.Models.Product;
+﻿using DL.Core.Models.Product;
 
 namespace DL.Directories.Interfaces.ProductInterface;
 

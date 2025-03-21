@@ -12,6 +12,7 @@ builder.Services.AddProduct();
 builder.Services.AddProductType();
 builder.Services.AddStorageLocation();
 builder.Services.AddAudit(builder.Configuration);
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

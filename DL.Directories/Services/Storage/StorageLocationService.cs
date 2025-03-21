@@ -1,15 +1,16 @@
-﻿using DL.Directories.Interfaces;
+﻿using DL.Core.Interfaces;
+using DL.Core.Models.Storage;
+using DL.Directories.Interfaces;
 using DL.Directories.Interfaces.StorageInterface;
-using DL.Directories.Models.Storage;
 using Microsoft.EntityFrameworkCore;
 
 namespace DL.Directories.Services.Storage;
 
 public class StorageLocationService : IStorageLocationService
 {
-    private readonly IDirectoriesRepository<StorageLocation> _repository;
+    private readonly IRepository<StorageLocation> _repository;
 
-    public StorageLocationService(IDirectoriesRepository<StorageLocation> storageLocationRepository)
+    public StorageLocationService(IRepository<StorageLocation> storageLocationRepository)
     {
         _repository = storageLocationRepository;
     }
@@ -35,8 +36,9 @@ public class StorageLocationService : IStorageLocationService
     {
         ArgumentNullException.ThrowIfNull(storageLocation);
 
-        storageLocation.CreatedAt = DateTime.UtcNow.Date;
+        storageLocation.CreatedAt = DateTime.UtcNow;
         storageLocation.UpdatedAt = DateTime.UtcNow;
+        storageLocation.UpdatedBy = storageLocation.CreatedBy;
         
         await _repository.AddAsync(storageLocation);
 
@@ -50,7 +52,8 @@ public class StorageLocationService : IStorageLocationService
         var result = await _repository.GetByIdAsync(storageLocation.Id);
         
         result.CreatedAt = DateTime.SpecifyKind(storageLocation.CreatedAt, DateTimeKind.Utc);
-        result.UpdatedAt = DateTime.UtcNow;
+        result.UpdatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc);
+        result.UpdatedBy = storageLocation.UpdatedBy;
         result.Rack = storageLocation.Rack;
         result.Compartment = storageLocation.Compartment;
         result.Part = storageLocation.Part;

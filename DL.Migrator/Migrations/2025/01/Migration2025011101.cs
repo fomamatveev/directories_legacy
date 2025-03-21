@@ -16,10 +16,10 @@ internal class Migration2025011101(DbConnection databaseConnection) : MigrationB
                                                     "EntityId" BIGINT NOT NULL,
                                                     "Changes" VARCHAR(100) NOT NULL,
                                                     "UpdatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-                                                    "ChangedBy" BIGINT NOT NULL);
+                                                    "UpdatedBy" BIGINT NOT NULL);
 
-                     ALTER TABLE IF EXISTS "AuditLog" DROP CONSTRAINT IF EXISTS "fk_user_changed_by";
-                     ALTER TABLE IF EXISTS "AuditLog" ADD CONSTRAINT "fk_user_changed_by" FOREIGN KEY ("ChangedBy") REFERENCES "User"("Id");
+                     ALTER TABLE IF EXISTS "AuditLog" DROP CONSTRAINT IF EXISTS "fk_user_updated_by";
+                     ALTER TABLE IF EXISTS "AuditLog" ADD CONSTRAINT "fk_user_updated_by" FOREIGN KEY ("UpdatedBy") REFERENCES "User"("Id");
                      """;
 
         DatabaseConnection.Execute(query);

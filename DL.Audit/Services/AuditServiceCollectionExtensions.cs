@@ -1,6 +1,6 @@
 ﻿using DL.Audit.Data;
 using DL.Audit.Interfaces;
-using DL.Audit.Repositories;
+using DL.Audit.Models.Interceptors;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,10 +17,12 @@ public static class AuditServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddAudit(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
+        serviceCollection.AddSingleton<AuditInterceptor>();
+        
         serviceCollection.AddDbContext<AuditDbContext>(options =>
-            options.UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
+            options
+                .UseNpgsql(configuration.GetConnectionString("DefaultConnection")));
 
-        serviceCollection.AddScoped(typeof(IAuditRepository<>), typeof(AuditRepository<>));
         serviceCollection.AddScoped<IAuditService, AuditService>();
 
         return serviceCollection;

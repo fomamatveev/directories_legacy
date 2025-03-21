@@ -1,16 +1,17 @@
-﻿using DL.Directories.Dtos;
+﻿using DL.Core.Interfaces;
+using DL.Core.Models.Product;
+using DL.Directories.Dtos;
 using DL.Directories.Interfaces;
 using DL.Directories.Interfaces.ProductInterface;
-using DL.Directories.Models.Product;
 using Microsoft.EntityFrameworkCore;
 
 namespace DL.Directories.Services.ProductService;
 
 public class ProductService : IProductService
 {
-    private readonly IDirectoriesRepository<Product> _repository;
+    private readonly IRepository<Product> _repository;
 
-    public ProductService(IDirectoriesRepository<Product> repository)
+    public ProductService(IRepository<Product> repository)
     {
         _repository = repository;
     }
@@ -52,7 +53,9 @@ public class ProductService : IProductService
         {
             Name = product.Name,
             CreatedAt = DateTime.UtcNow,
+            CreatedBy = product.CreatedBy,
             UpdatedAt = DateTime.UtcNow,
+            UpdatedBy = product.CreatedBy,
             Quantity = product.Quantity,
             ProductTypeId = product.ProductTypeId,
             StorageLocationId = product.StorageLocationId
@@ -71,7 +74,8 @@ public class ProductService : IProductService
 
         result.Name = product.Name;
         result.CreatedAt = DateTime.SpecifyKind(product.CreatedAt, DateTimeKind.Utc);
-        result.UpdatedAt = DateTime.UtcNow;
+        result.UpdatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc);
+        result.UpdatedBy = product.UpdatedBy;
         result.Quantity = product.Quantity;
         result.ProductTypeId = product.ProductTypeId;
         result.StorageLocationId = product.StorageLocationId;

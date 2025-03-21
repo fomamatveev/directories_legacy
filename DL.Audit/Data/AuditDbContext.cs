@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DL.Core.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DL.Audit.Data;
 
@@ -8,7 +9,6 @@ public class AuditDbContext : DbContext
     {
     }
     
-    public DbSet<Models.Audit> Audits { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
