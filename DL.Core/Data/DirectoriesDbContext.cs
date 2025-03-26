@@ -1,4 +1,5 @@
 ﻿using DL.Core.Models;
+using DL.Core.Models.Audit;
 using DL.Core.Models.Auth;
 using DL.Core.Models.Product;
 using DL.Core.Models.Storage;
@@ -23,6 +24,8 @@ public class DirectoriesDbContext : DbContext
     public DbSet<StorageLocation> StorageLocations { get; set; }
     
     public DbSet<AuditAction> Actions { get; set; }
+    
+    public DbSet<EntityType> EntityTypes { get; set; }
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

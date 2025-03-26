@@ -1,4 +1,4 @@
-﻿using DL.Core.Models;
+﻿using DL.Core.Models.Audit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

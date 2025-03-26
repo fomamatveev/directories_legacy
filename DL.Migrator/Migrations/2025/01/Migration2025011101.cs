@@ -14,7 +14,7 @@ internal class Migration2025011101(DbConnection databaseConnection) : MigrationB
                                                     "Action" INT NOT NULL,
                                                     "EntityName" VARCHAR(100) NOT NULL,
                                                     "EntityId" BIGINT NOT NULL,
-                                                    "Changes" VARCHAR(100) NOT NULL,
+                                                    "Changes" VARCHAR(1000) NOT NULL,
                                                     "UpdatedAt" TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
                                                     "UpdatedBy" BIGINT NOT NULL);
 

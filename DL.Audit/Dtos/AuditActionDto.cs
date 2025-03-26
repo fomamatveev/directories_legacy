@@ -18,11 +18,6 @@ public class AuditActionDto
     public string EntityName { get; set; }
     
     /// <summary>
-    /// Идентификатор сущности
-    /// </summary>
-    public long EntityId { get; set; }
-    
-    /// <summary>
     /// Изменения
     /// </summary>
     public string Changes { get; set; }

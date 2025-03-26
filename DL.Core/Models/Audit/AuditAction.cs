@@ -1,29 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DL.Core.Models;
-
-public enum AuditActionEnum
-{
-    /// <summary>
-    /// Чтение/просмотр
-    /// </summary>
-    Read = 1,
-    
-    /// <summary>
-    /// Удаление
-    /// </summary>
-    Delete = 2,
-    
-    /// <summary>
-    /// Обновление
-    /// </summary>
-    Update = 3,
-    
-    /// <summary>
-    /// Создание
-    /// </summary>
-    Create = 4,
-}
+namespace DL.Core.Models.Audit;
 
 [Table("AuditLog")]
 public class AuditAction
@@ -47,7 +24,7 @@ public class AuditAction
     /// <summary>
     /// Идентификатор сущности
     /// </summary>
-    public long EntityId { get; set; }
+    public EntityTypeEnum EntityId { get; set; }
     
     /// <summary>
     /// Изменения
