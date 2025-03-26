@@ -71,4 +71,18 @@ public class StorageLocationService : IStorageLocationService
 
         return true;
     }
+    
+    public async Task<string> GetForAuditAsync(int id)
+    {
+        var storageLocation = await _repository.GetByIdAsync(id);
+
+        if (storageLocation == null)
+        {
+            throw new KeyNotFoundException($"ProductType with ID {id} not found.");
+        }
+
+        var name = $"{storageLocation.Rack}/{storageLocation.Compartment}/{storageLocation.Part}";
+        
+        return name;
+    }
 }

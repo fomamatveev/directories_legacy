@@ -98,4 +98,19 @@ public class StorageLocationController : ControllerBase
             return NotFound();
         }
     }
+    
+    [HttpGet("for-audit/{id:int}")]
+    public async Task<IActionResult> GetForAudit(int id)
+    {
+        try
+        {
+            var storageLocationName = await _storageLocationService.GetForAuditAsync(id);
+
+            return Ok(storageLocationName);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }

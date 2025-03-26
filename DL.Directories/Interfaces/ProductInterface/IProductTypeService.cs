@@ -13,4 +13,6 @@ public interface IProductTypeService
     Task<ProductType> UpdateAsync(ProductType productType);
     
     Task<bool> DeleteAsync(int id);
+    
+    Task<string> GetForAuditAsync(int id);
 }

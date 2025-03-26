@@ -16,4 +16,6 @@ public interface IStorageLocationService
     Task<StorageLocation> UpdateAsync(StorageLocation product);
     
     Task<bool> DeleteAsync(int id);
+
+    Task<string> GetForAuditAsync(int id);
 }

@@ -69,4 +69,16 @@ public class ProductTypeService : IProductTypeService
 
         return true;
     }
+
+    public async Task<string> GetForAuditAsync(int id)
+    {
+        var productType = await _repository.GetByIdAsync(id);
+
+        if (productType == null)
+        {
+            throw new KeyNotFoundException($"ProductType with ID {id} not found.");
+        }
+        
+        return productType.Name!;
+    }
 }

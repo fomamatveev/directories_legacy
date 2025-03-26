@@ -98,4 +98,19 @@ public class ProductTypeController : ControllerBase
             return NotFound();
         }
     }
+    
+    [HttpGet("for-audit/{id:int}")]
+    public async Task<IActionResult> GetForAudit(int id)
+    {
+        try
+        {
+            var productTypeName = await _productTypeService.GetForAuditAsync(id);
+
+            return Ok(productTypeName);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }

@@ -1,10 +1,7 @@
 ﻿using DL.Audit.Dtos;
 using DL.Audit.Interfaces;
-using DL.Auth.Interfaces;
-using DL.Auth.Models;
 using DL.Core.Extensions;
 using DL.Core.Interfaces;
-using DL.Core.Models;
 using DL.Core.Models.Audit;
 using DL.Core.Models.Auth;
 using Microsoft.EntityFrameworkCore;
