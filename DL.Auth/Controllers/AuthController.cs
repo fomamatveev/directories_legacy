@@ -68,4 +68,11 @@ public class AuthController(AuthService authService) : ControllerBase
         
         return Ok();
     }
+
+    [Authorize]
+    [HttpGet("getme")]
+    public Task<IActionResult> GetMe()
+    {
+        return Task.FromResult<IActionResult>(Ok());
+    }
 }
