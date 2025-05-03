@@ -15,13 +15,13 @@ INSERT INTO ""Product""
 VALUES(2, NULL, NULL, '2025-05-03 15:26:57.155', 1, '2025-05-03 15:26:57.155', 1, NULL, 12, 3, 3, 2);
 INSERT INTO ""Product""
 (""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
-VALUES(3, NULL, NULL, '2025-05-03 15:27:09.847', 1, '2025-05-03 15:27:09.847', 1, NULL, 4, 3, 11, 1);
-INSERT INTO ""Product""
-(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
-VALUES(4, NULL, NULL, '2025-05-03 15:27:21.246', 1, '2025-05-03 15:27:21.246', 1, NULL, 2, 6, 1, 4);
-INSERT INTO ""Product""
-(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
 VALUES(5, NULL, NULL, '2025-05-03 15:27:35.316', 1, '2025-05-03 15:27:35.316', 1, NULL, 6, 6, 6, 5);
+INSERT INTO ""Product""
+(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
+VALUES(6, NULL, NULL, '2025-05-03 16:11:39.707', 1, '2025-05-03 16:12:01.867', 1, NULL, 4, 6, 10, 4);
+INSERT INTO ""Product""
+(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
+VALUES(3, NULL, NULL, '2025-05-03 15:27:09.847', 1, '2025-05-03 16:50:54.003', 1, NULL, 6, 3, 12, 1);
 ";
     
     private const string ProductNameData = @"
@@ -66,7 +66,7 @@ INSERT INTO ""ProductType""
 VALUES(7, 'Электроника', 'Электроника', '2025-05-03 15:07:39.557', 1, '2025-05-03 15:07:39.557', 1);
 ";
     
-    private const string StorageLocatioData = $@"
+    private const string StorageLocationData = $@"
 INSERT INTO ""StorageLocation""
 (""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Rack"", ""Compartment"", ""Part"")
 VALUES(1, NULL, NULL, '2025-05-03 15:05:14.714', 1, '2025-05-03 15:05:14.714', 1, 1, 1, 1);
@@ -76,12 +76,6 @@ VALUES(2, NULL, NULL, '2025-05-03 15:05:17.593', 1, '2025-05-03 15:05:17.593', 1
 INSERT INTO ""StorageLocation""
 (""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Rack"", ""Compartment"", ""Part"")
 VALUES(3, NULL, NULL, '2025-05-03 15:05:20.637', 1, '2025-05-03 15:05:20.637', 1, 3, 1, 1);
-INSERT INTO ""StorageLocation""
-(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Rack"", ""Compartment"", ""Part"")
-VALUES(4, NULL, NULL, '2025-05-03 15:05:24.833', 1, '2025-05-03 15:05:24.833', 1, 1, 1, 2);
-INSERT INTO ""StorageLocation""
-(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Rack"", ""Compartment"", ""Part"")
-VALUES(5, NULL, NULL, '2025-05-03 15:05:27.548', 1, '2025-05-03 15:05:27.548', 1, 1, 1, 3);
 INSERT INTO ""StorageLocation""
 (""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Rack"", ""Compartment"", ""Part"")
 VALUES(6, NULL, NULL, '2025-05-03 15:05:29.933', 1, '2025-05-03 15:05:29.933', 1, 1, 2, 1);
@@ -108,7 +102,8 @@ INSERT INTO ""StorageLocation""
 VALUES(13, NULL, NULL, '2025-05-03 15:05:51.895', 1, '2025-05-03 15:05:51.895', 1, 3, 2, 3);
 INSERT INTO ""StorageLocation""
 (""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Rack"", ""Compartment"", ""Part"")
-VALUES(14, NULL, NULL, '2025-05-03 15:05:56.370', 1, '2025-05-03 15:05:56.370', 1, 3, 3, 1);";
+VALUES(14, NULL, NULL, '2025-05-03 15:05:56.370', 1, '2025-05-03 15:05:56.370', 1, 3, 3, 1);
+";
 
     private string AuditLogData = @"
 INSERT INTO ""AuditLog""
@@ -223,7 +218,7 @@ VALUES(35, 4, 'Product', 2, '{""operation"":""Create"",""changes"":{""Id"":{""ne
         var query = $@"
 {ProductNameData}
 {ProductTypeData}
-{StorageLocatioData}
+{StorageLocationData}
 {ProductData}
 {AuditLogData}
 ";
