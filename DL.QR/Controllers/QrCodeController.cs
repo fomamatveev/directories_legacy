@@ -19,7 +19,7 @@ public class QrCodeController : ControllerBase
     }
 
     [HttpPost("generate")]
-    public async Task<IActionResult> GenerateQRCode([FromBody] QrCodeRequest request)
+    public async Task<IActionResult> GenerateQrCode([FromBody] QrCodeRequest request)
     {
         var qrGenerator = new QRCodeGenerator();
         var qrCodeData = qrGenerator.CreateQrCode(JsonSerializer.Serialize(request), QRCodeGenerator.ECCLevel.Q);
@@ -40,7 +40,6 @@ public class QrCodeController : ControllerBase
             HtmlContent = $@"
                     <html>
                     <body>
-                        <p>Наименование: {request.Name}, Количество: {request.Quantity}</p>
                         <img src=""data:image/png;base64,{Convert.ToBase64String(qrCodeImage.ToArray())}"" />
                         <img src=""data:image/png;base64,{Convert.ToBase64String(qrCodeImage.ToArray())}"" />
                         <img src=""data:image/png;base64,{Convert.ToBase64String(qrCodeImage.ToArray())}"" />
