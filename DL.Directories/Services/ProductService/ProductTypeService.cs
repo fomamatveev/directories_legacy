@@ -52,7 +52,6 @@ public class ProductTypeService : IProductTypeService
 
         result.Name = productType.Name;
         result.ShortName = productType.ShortName;
-        result.CreatedAt = DateTime.SpecifyKind(productType.CreatedAt, DateTimeKind.Utc);
         result.UpdatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc);
         result.UpdatedBy = productType.UpdatedBy;
         
