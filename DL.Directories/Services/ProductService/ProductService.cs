@@ -50,22 +50,41 @@ public class ProductService : IProductService
     {
         ArgumentNullException.ThrowIfNull(product);
 
-        var result = new Product
-        {
-            Name = product.Name,
-            CreatedAt = DateTime.UtcNow,
-            CreatedBy = product.CreatedBy,
-            UpdatedAt = DateTime.UtcNow,
-            UpdatedBy = product.CreatedBy,
-            Quantity = product.Quantity,
-            ProductNameId = product.ProductNameId,
-            ProductTypeId = product.ProductTypeId,
-            StorageLocationId = product.StorageLocationId
-        };
-        
-        await _repository.AddAsync(result);
+        var existsProduct = await _repository.GetAll()
+            .Where(x => x.ProductNameId == product.ProductNameId
+                        && x.ProductTypeId == product.ProductTypeId
+                        && x.StorageLocationId == product.StorageLocationId)
+            .FirstOrDefaultAsync();
 
-        return result;
+        Product result;
+        if (existsProduct is null)
+        {
+            result = new Product
+            {
+                Name = product.Name,
+                CreatedAt = DateTime.UtcNow,
+                CreatedBy = product.CreatedBy,
+                UpdatedAt = DateTime.UtcNow,
+                UpdatedBy = product.CreatedBy,
+                Quantity = product.Quantity,
+                ProductNameId = product.ProductNameId,
+                ProductTypeId = product.ProductTypeId,
+                StorageLocationId = product.StorageLocationId
+            };
+        
+            await _repository.AddAsync(result);
+            
+            return result;
+        }
+        
+        existsProduct.CreatedAt = DateTime.SpecifyKind(existsProduct.CreatedAt, DateTimeKind.Utc);
+        existsProduct.UpdatedAt = DateTime.SpecifyKind(DateTime.UtcNow, DateTimeKind.Utc);
+        existsProduct.UpdatedBy = product.CreatedBy;
+        existsProduct.Quantity += product.Quantity;
+        
+        await _repository.UpdateAsync(existsProduct);
+
+        return existsProduct;
     }
 
     public async Task<Product> UpdateAsync(ProductDto product)
