@@ -1,0 +1,69 @@
+{
+  "v": 1,
+  "id": "a8d394ce-c3e4-4db5-8581-1afba368f4d0",
+  "rev": 1,
+  "name": "Default Input Pack",
+  "summary": "Default Input Pack",
+  "description": "",
+  "vendor": "EIRCM",
+  "url": "",
+  "parameters": [],
+  "entities": [
+    {
+      "v": "1",
+      "type": {
+        "name": "input",
+        "version": "1"
+      },
+      "id": "ec3a9448-440e-49de-9d49-efe2d0541147",
+      "data": {
+        "title": {
+          "@type": "string",
+          "@value": "default"
+        },
+        "configuration": {
+          "recv_buffer_size": {
+            "@type": "integer",
+            "@value": 262144
+          },
+          "port": {
+            "@type": "integer",
+            "@value": 12201
+          },
+          "number_worker_threads": {
+            "@type": "integer",
+            "@value": 20
+          },
+          "charset_name": {
+            "@type": "string",
+            "@value": "UTF-8"
+          },
+          "bind_address": {
+            "@type": "string",
+            "@value": "0.0.0.0"
+          },
+          "decompress_size_limit": {
+            "@type": "integer",
+            "@value": 8388608
+          }
+        },
+        "static_fields": {},
+        "type": {
+          "@type": "string",
+          "@value": "org.graylog2.inputs.gelf.udp.GELFUDPInput"
+        },
+        "global": {
+          "@type": "boolean",
+          "@value": false
+        },
+        "extractors": []
+      },
+      "constraints": [
+        {
+          "type": "server-version",
+          "version": ">=5.0.5+d61a926"
+        }
+      ]
+    }
+  ]
+}
