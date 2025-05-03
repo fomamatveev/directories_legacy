@@ -12,6 +12,11 @@ public class ProductListDto : Entity
     /// <summary>
     /// Категория продукта
     /// </summary>
+    public string ProductName { get; set; }
+    
+    /// <summary>
+    /// Категория продукта
+    /// </summary>
     public string ProductTypeName { get; set; }
     
     /// <summary>

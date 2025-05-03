@@ -17,6 +17,11 @@ public class ProductDto : Entity
     /// <summary>
     /// Идентификатор категории продукта
     /// </summary>
+    public long ProductNameId { get; set; }
+    
+    /// <summary>
+    /// Идентификатор категории продукта
+    /// </summary>
     public long ProductTypeId { get; set; }
     
     /// <summary>

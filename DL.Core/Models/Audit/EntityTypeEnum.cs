@@ -24,4 +24,9 @@ public enum EntityTypeEnum
     /// Место хранения
     /// </summary>
     StorageLocation = 4,
+    
+    /// <summary>
+    /// Наименование товара
+    /// </summary>
+    ProductName = 5,
 }

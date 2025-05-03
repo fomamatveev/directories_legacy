@@ -44,6 +44,18 @@ public static class DirectoriesServiceCollectionExtensions
 
         return serviceCollection;
     }
+        
+    /// <summary>
+    /// Расширение для регистрации StorageLocationService
+    /// </summary>
+    /// <param name="serviceCollection"></param>
+    /// <returns></returns>
+    public static IServiceCollection AddProductName(this IServiceCollection serviceCollection)
+    {
+        serviceCollection.AddScoped<IProductNameService, ProductNameService>();
+
+        return serviceCollection;
+    }
     
     /// <summary>
     /// Расширение для регистрации ProductTypeService

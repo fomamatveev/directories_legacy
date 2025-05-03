@@ -25,6 +25,7 @@ public class ProductService : IProductService
                 Name = x.Name,
                 CreatedAt = x.CreatedAt,
                 Quantity = x.Quantity,
+                ProductName = x.ProductName.Name,
                 ProductTypeName = x.ProductType.Name,
                 StorageLocationPosition = $"{x.StorageLocation.Rack}/{x.StorageLocation.Compartment}/{x.StorageLocation.Part}"
             })
@@ -57,6 +58,7 @@ public class ProductService : IProductService
             UpdatedAt = DateTime.UtcNow,
             UpdatedBy = product.CreatedBy,
             Quantity = product.Quantity,
+            ProductNameId = product.ProductNameId,
             ProductTypeId = product.ProductTypeId,
             StorageLocationId = product.StorageLocationId
         };

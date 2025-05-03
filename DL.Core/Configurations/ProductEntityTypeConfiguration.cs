@@ -14,9 +14,14 @@ public class ProductEntityTypeConfiguration : BaseEntityTypeConfiguration<Produc
         
         builder.Property(x => x.Description).HasColumnName("Description");
         builder.Property(x => x.Quantity).HasColumnName("Quantity");
+        builder.Property(x => x.ProductNameId).HasColumnName("ProductNameId");
         builder.Property(x => x.ProductTypeId).HasColumnName("ProductTypeId");
         builder.Property(x => x.StorageLocationId).HasColumnName("StorageLocationId");
 
+        builder
+            .HasOne(x => x.ProductName)
+            .WithMany();
+        
         builder
             .HasOne(x => x.ProductType)
             .WithMany();

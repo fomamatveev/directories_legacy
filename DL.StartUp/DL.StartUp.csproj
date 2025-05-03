@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="DinkToPdf" Version="1.0.8" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
@@ -16,6 +17,7 @@
       <ProjectReference Include="..\DL.Auth\DL.Auth.csproj" />
       <ProjectReference Include="..\DL.Directories\DL.Directories.csproj" />
       <ProjectReference Include="..\DL.Migrator\DL.Migrator.csproj" />
+      <ProjectReference Include="..\DL.QR\DL.QR.csproj" />
     </ItemGroup>
 
 </Project>

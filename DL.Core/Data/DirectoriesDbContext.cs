@@ -19,6 +19,8 @@ public class DirectoriesDbContext : DbContext
     
     public DbSet<Product> Products { get; set; }
     
+    public DbSet<ProductName> ProductNames { get; set; }
+    
     public DbSet<ProductType> ProductTypes { get; set; }
     
     public DbSet<StorageLocation> StorageLocations { get; set; }

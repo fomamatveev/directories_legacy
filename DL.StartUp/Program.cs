@@ -1,3 +1,5 @@
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using DL.Audit.Services;
 using DL.Auth.Services;
 using DL.Directories.Services;
@@ -9,10 +11,12 @@ builder.Services.AddMigrator();
 builder.Services.AddAuth(builder.Configuration);
 builder.Services.AddDirectoriesRepository(builder.Configuration);
 builder.Services.AddProduct();
+builder.Services.AddProductName();
 builder.Services.AddProductType();
 builder.Services.AddStorageLocation();
 builder.Services.AddAudit(builder.Configuration);
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddSingleton<IConverter>(new SynchronizedConverter(new PdfTools()));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -46,6 +50,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowFrontend");
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

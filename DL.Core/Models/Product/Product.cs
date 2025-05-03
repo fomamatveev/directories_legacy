@@ -18,6 +18,11 @@ public class Product : Entity
     public int Quantity { get; set; }
     
     /// <summary>
+    /// Наименование продукта
+    /// </summary>
+    public ProductName ProductName { get; set; }
+    
+    /// <summary>
     /// Категория продукта
     /// </summary>
     public ProductType ProductType { get; set; }
@@ -26,6 +31,11 @@ public class Product : Entity
     /// Место хранения
     /// </summary>
     public StorageLocation StorageLocation { get; set; }
+    
+    /// <summary>
+    /// Идентификатор наименования продукта
+    /// </summary>
+    public long ProductNameId { get; set; }
     
     /// <summary>
     /// Идентификатор категории продукта

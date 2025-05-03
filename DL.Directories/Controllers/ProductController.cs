@@ -50,11 +50,6 @@ public class ProductController : ControllerBase
     {
         var userId = HttpContext.User.GetUserId();
         product.CreatedBy = userId;
-        
-        if (product == null)
-        {
-            return BadRequest("Product is null");
-        }
 
         var result = await _productService.CreateAsync(product);
 
