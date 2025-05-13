@@ -9,7 +9,6 @@
 
     <ItemGroup>
         <PackageReference Include="DinkToPdf" Version="1.0.8" />
-        <PackageReference Include="Gelf.Extensions.Logging" Version="2.6.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.8"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
     </ItemGroup>
@@ -18,6 +17,7 @@
       <ProjectReference Include="..\DL.Audit\DL.Audit.csproj" />
       <ProjectReference Include="..\DL.Auth\DL.Auth.csproj" />
       <ProjectReference Include="..\DL.Directories\DL.Directories.csproj" />
+      <ProjectReference Include="..\DL.Graylog\DL.Graylog.csproj" />
       <ProjectReference Include="..\DL.Migrator\DL.Migrator.csproj" />
       <ProjectReference Include="..\DL.QR\DL.QR.csproj" />
     </ItemGroup>

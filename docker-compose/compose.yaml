@@ -10,51 +10,58 @@
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  graylog:
-    image: graylog/graylog:4.2
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
     environment:
-      - GRAYLOG_PASSWORD_SECRET=your_password_secret
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - graylog_net
+  
+  opensearch:
+    image: opensearchproject/opensearch:2.10.0
+    container_name: opensearch
+    environment:
+      - discovery.type=single-node
+      - plugins.security.disabled=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - os_data:/usr/share/opensearch/data
+    networks:
+      - graylog_net
+
+  graylog:
+    image: graylog/graylog:5.1
+    container_name: graylog
+    environment:
+      - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
       - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-      - GRAYLOG_WEB_ENDPOINT_URI=http://graylog:9000/api
-      - GRAYLOG_CONTENT_PACKS_LOADER_ENABLED=true
-      - GRAYLOG_CONTENT_PACKS_AUTO_INSTALL=default-input.json
-      - GRAYLOG_CONTENT_PACKS_DIR=data/contentpacks
-      - GRAYLOG_HTTP_BIND_ADDRESS=0.0.0.0:9000
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      - GRAYLOG_ELASTICSEARCH_HOSTS=http://opensearch:9200
+      - GRAYLOG_MONGODB_URI=mongodb://root:example@mongodb:27017/graylog?authSource=admin
+    depends_on:
+      - mongodb
+      - opensearch
     ports:
       - "9000:9000"
       - "12201:12201/udp"
-    healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:9000/api" ]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-    volumes:
-      - ./contentpacks/:/usr/share/graylog/data/contentpacks/
-
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
-    environment:
-      - discovery.type=single-node
-      - ES_JAVA_OPTS=-Xms512m -Xmx512m
-
-  mongo:
-    image: mongo:4.2
-
-#  directories_legacy:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile
-#    environment:
-#      - ASPNETCORE_ENVIRONMENT=Development
-#      - GRAYLOG_HOST=graylog
-#      - GRAYLOG_PORT=12201
-#    ports:
-#      - "5000:8080"
-#    depends_on:
-#      - graylog
-#      - postgres
+    networks:
+      - graylog_net
 
 volumes:
   postgres_data:
-  es_data:
-  mongo_data:
+  mongodb_data:
+    driver: local
+  os_data:
+    driver: local
+    
+networks:
+  graylog_net:
+    driver: bridge
