@@ -11,7 +11,7 @@
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
-      - graylog_net
+      - webapp_net
 
 #  mongodb:
 #    image: mongo:6.0
@@ -22,7 +22,7 @@
 #    volumes:
 #      - mongodb_data:/data/db
 #    networks:
-#      - graylog_net
+#      - webapp_net
 #
 #  opensearch:
 #    image: opensearchproject/opensearch:2.10.0
@@ -38,7 +38,7 @@
 #    volumes:
 #      - os_data:/usr/share/opensearch/data
 #    networks:
-#      - graylog_net
+#      - webapp_net
 #
 #  graylog:
 #    image: graylog/graylog:5.1
@@ -57,7 +57,7 @@
 #      - "12201:12201"
 #      - "12201:12201/udp"
 #    networks:
-#      - graylog_net
+#      - webapp_net
 
   webapp:
     build:
@@ -75,7 +75,7 @@
     depends_on:
       - postgres
     networks:
-      - graylog_net
+      - webapp_net
 
 volumes:
   postgres_data:
@@ -85,5 +85,5 @@ volumes:
 #    driver: local
 
 networks:
-  graylog_net:
+  webapp_net:
     driver: bridge
