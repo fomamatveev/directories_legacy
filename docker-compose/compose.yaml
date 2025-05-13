@@ -13,51 +13,51 @@
     networks:
       - webapp_net
 
-#  mongodb:
-#    image: mongo:6.0
-#    container_name: mongodb
-#    environment:
-#      MONGO_INITDB_ROOT_USERNAME: root
-#      MONGO_INITDB_ROOT_PASSWORD: example
-#    volumes:
-#      - mongodb_data:/data/db
-#    networks:
-#      - webapp_net
-#
-#  opensearch:
-#    image: opensearchproject/opensearch:2.10.0
-#    container_name: opensearch
-#    environment:
-#      - discovery.type=single-node
-#      - plugins.security.disabled=true
-#      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
-#    ulimits:
-#      memlock:
-#        soft: -1
-#        hard: -1
-#    volumes:
-#      - os_data:/usr/share/opensearch/data
-#    networks:
-#      - webapp_net
-#
-#  graylog:
-#    image: graylog/graylog:5.1
-#    container_name: graylog
-#    environment:
-#      - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
-#      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
-#      - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
-#      - GRAYLOG_ELASTICSEARCH_HOSTS=http://opensearch:9200
-#      - GRAYLOG_MONGODB_URI=mongodb://root:example@mongodb:27017/graylog?authSource=admin
-#    depends_on:
-#      - mongodb
-#      - opensearch
-#    ports:
-#      - "9000:9000"
-#      - "12201:12201"
-#      - "12201:12201/udp"
-#    networks:
-#      - webapp_net
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - webapp_net
+
+  opensearch:
+    image: opensearchproject/opensearch:2.10.0
+    container_name: opensearch
+    environment:
+      - discovery.type=single-node
+      - plugins.security.disabled=true
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - os_data:/usr/share/opensearch/data
+    networks:
+      - webapp_net
+
+  graylog:
+    image: graylog/graylog:5.1
+    container_name: graylog
+    environment:
+      - GRAYLOG_PASSWORD_SECRET=somepasswordpepper
+      - GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
+      - GRAYLOG_ELASTICSEARCH_HOSTS=http://opensearch:9200
+      - GRAYLOG_MONGODB_URI=mongodb://root:example@mongodb:27017/graylog?authSource=admin
+    depends_on:
+      - mongodb
+      - opensearch
+    ports:
+      - "9000:9000"
+      - "12201:12201"
+      - "12201:12201/udp"
+    networks:
+      - webapp_net
 
   webapp:
     build:
@@ -67,8 +67,8 @@
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:5000
-#      - GRAYLOG_HOST=graylog
-#      - GRAYLOG_PORT=12201
+      - GRAYLOG_HOST=graylog
+      - GRAYLOG_PORT=12201
       - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=db;Username=postgres;Password=postgres
     ports:
       - "5000:5000"
@@ -79,10 +79,10 @@
 
 volumes:
   postgres_data:
-#  mongodb_data:
-#    driver: local
-#  os_data:
-#    driver: local
+  mongodb_data:
+    driver: local
+  os_data:
+    driver: local
 
 networks:
   webapp_net:

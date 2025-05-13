@@ -15,13 +15,13 @@ INSERT INTO ""Product""
 VALUES(2, NULL, NULL, '2025-05-03 15:26:57.155', 1, '2025-05-03 15:26:57.155', 1, NULL, 12, 3, 3, 2);
 INSERT INTO ""Product""
 (""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
-VALUES(5, NULL, NULL, '2025-05-03 15:27:35.316', 1, '2025-05-03 15:27:35.316', 1, NULL, 6, 6, 6, 5);
-INSERT INTO ""Product""
-(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
-VALUES(6, NULL, NULL, '2025-05-03 16:11:39.707', 1, '2025-05-03 16:12:01.867', 1, NULL, 4, 6, 10, 4);
-INSERT INTO ""Product""
-(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
 VALUES(3, NULL, NULL, '2025-05-03 15:27:09.847', 1, '2025-05-03 16:50:54.003', 1, NULL, 6, 3, 12, 1);
+INSERT INTO ""Product""
+(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
+VALUES(4, NULL, NULL, '2025-05-03 15:27:35.316', 1, '2025-05-03 15:27:35.316', 1, NULL, 6, 6, 6, 5);
+INSERT INTO ""Product""
+(""Id"", ""Name"", ""ShortName"", ""CreatedAt"", ""CreatedBy"", ""UpdatedAt"", ""UpdatedBy"", ""Description"", ""Quantity"", ""ProductTypeId"", ""StorageLocationId"", ""ProductNameId"")
+VALUES(5, NULL, NULL, '2025-05-03 16:11:39.707', 1, '2025-05-03 16:12:01.867', 1, NULL, 4, 6, 10, 4);
 ";
     
     private const string ProductNameData = @"
@@ -213,6 +213,14 @@ INSERT INTO ""AuditLog""
 VALUES(35, 4, 'Product', 2, '{""operation"":""Create"",""changes"":{""Id"":{""newValue"":-9223372036854774803},""CreatedAt"":{""newValue"":""2025-05-03T15:27:35.3162928Z""},""CreatedBy"":{""newValue"":1},""Description"":{},""Name"":{},""ProductNameId"":{""newValue"":5},""ProductTypeId"":{""newValue"":6},""Quantity"":{""newValue"":6},""ShortName"":{},""StorageLocationId"":{""newValue"":6},""UpdatedAt"":{""newValue"":""2025-05-03T15:27:35.3162931Z""},""UpdatedBy"":{""newValue"":1}}}', '2025-05-03 15:27:35.316', 1);
 ";
 
+    private readonly string MoveSequence = @"
+SELECT setval('""ProductName_Id_seq""', 5);
+SELECT setval('""ProductType_Id_seq""', 7);
+SELECT setval('""StorageLocation_Id_seq""', 14);
+SELECT setval('""Product_Id_seq""', 5);
+SELECT setval('""AuditLog_Id_seq""', 35);
+";
+
     public override void Up()
     {
         var query = $@"
@@ -221,6 +229,7 @@ VALUES(35, 4, 'Product', 2, '{""operation"":""Create"",""changes"":{""Id"":{""ne
 {StorageLocationData}
 {ProductData}
 {AuditLogData}
+{MoveSequence}
 ";
 
         DatabaseConnection.Execute(query);
